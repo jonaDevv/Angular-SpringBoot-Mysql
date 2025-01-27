@@ -2,7 +2,8 @@
 
 Este proyecto es una **aplicación web** en la que el **Frontend** está hecho con **Angular**, el **Backend** con **Spring Boot**, y la **Base de Datos** con **MySQL**. La aplicación permite gestionar productos en una tabla, donde se pueden **añadir, actualizar, borrar y eliminar** productos. El frontend hace peticiones a una **API REST** de Spring Boot para interactuar con la base de datos.
 
-El archivo `docker-compose.yml` configura la infraestructura para la ejecución de los contenedores de los tres servicios: **Frontend**, **Backend** (Spring Boot) y **MySQL**.
+Puedes usar el archivo `docker-compose.yml` para configura la infraestructura para la ejecución de los contenedores de los tres servicios:
+**Frontend**, **Backend** (Spring Boot) y **MySQL**.
 
 Las imagenes estan alojadas en DockerHub por lo que debe de poder hacer pull y ejecutar la app.
 
@@ -35,8 +36,27 @@ El servicio de backend está basado en una aplicación **Spring Boot**, que prop
   - `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD`: Credenciales para acceder a la base de datos MySQL.
 - **Puertos**: El contenedor del backend expone el puerto `8080` (interno) en el puerto `8081` de la máquina host, lo que permite acceder a la API backend en `http://localhost:8081`.
 
+## Trabajar con las imagenes en docker
 
+Una vez que hayas creado y probado tus contenedores localmente, puedes subir las imágenes a Docker Hub para poder compartirlas o utilizarlas en otras máquinas. Aquí están los comandos para subir cada servicio:
+### Crear la imagen del Backend
+```bash
+cd contenedorBack
+docker build -t jonadevv/jrm-practicas-docker:backend-1.0 .
+```
+### Subir las imagen:
+```bash
+docker push jonadevv/jrm-practicas-docker:backend-1.0
 
+docker push jonadevv/jrm-practicas-docker:frontend-1.0
+
+docker push jonadevv/jrm-practicas-docker:mysql-1.0
+```
+### Lanzar los contenedores*:
+```bash
+docker compose up --build
+
+```
 ### Redes
 
 Se define una red personalizada llamada `app-network`, a la que se conectan todos los contenedores. Esto permite que los servicios frontend, backend y MySQL puedan comunicarse entre sí de manera segura y eficiente.
@@ -45,8 +65,9 @@ Se define una red personalizada llamada `app-network`, a la que se conectan todo
 
 **¡Importante!** Antes de ejecutar el proyecto, asegúrate de tener Docker y Docker Compose instalados en tu máquina. Además, si vas a trabajar con la base de datos, asegúrate de que las credenciales de acceso estén correctamente configuradas.
 
-**Además** Si no arranca el contenedor de backend, elimianr volumenes de docker.
-- El contenedor de MySQL está configurado con la contraseña por defecto `123456DAW.`. Cambia esta contraseña antes de usarlo en producción.
-- Asegúrate de que no haya otro servicio utilizando el puerto `3307` en tu máquina local, ya que el contenedor de MySQL expone este puerto.
+**¡Además!** Si no arranca el contenedor de backend, eliminar volumenes de docker.
+
 
 Si encuentras algún problema al iniciar los contenedores, verifica que no haya procesos previos bloqueando los puertos necesarios o que la imagen de Docker esté actualizada.
+
+

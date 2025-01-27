@@ -1,0 +1,6 @@
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/AppApplication.java
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/config/WebConfig.java
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/controller/ApiProductoController.java
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/controller/ProductController.java
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/entity/Producto.java
+/usr/local/var/www/java/SpringBoot/Jona-app-docker/backend/src/main/java/com/jrm/app/repository/ProductRepository.java
